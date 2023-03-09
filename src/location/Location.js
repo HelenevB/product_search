@@ -64,11 +64,3 @@ export default function Location(props) {
   );
 }
 
-
-
-// const handleClick = (event) => {
-//   console.log("clicked");
-//   props.loadAttractions(event.target.id);
-//   props.filteredAttractions( event.target.id, props.searchValue);
-//   handleMouseOut();
-// };

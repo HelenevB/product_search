@@ -1,27 +1,25 @@
-import React, { useState} from 'react'
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function SearchBar(props) {
+  const [innerValue, setInnerValue] = useState("");
 
-const[innerValue, setInnerValue] = useState("")
+  const handleChange = (event) => {
+    setInnerValue(event.target.value);
+    console.log(`search bar input on typing :${innerValue}`);
+  };
 
-const handleChange = (event) => {
-    setInnerValue(event.target.value)
-    console.log(`search bar input on typing :${innerValue}`)
-}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.loadAttractions(props.location, innerValue);
+    console.log(
+      `submission of search form, location = ${props.location} search value =${innerValue}`
+    );
+  };
 
-const handleSubmit = (event) => {
-    event.preventDefault()
-    props.loadAttractions(props.location, innerValue)
-    event.target.reset()
-    console.log(`submission of search form, location = ${props.location} search value =${innerValue}`)
-}
-
-
- 
-    return (
-      <div id="search-container">
+  return (
+    <div id="search-container">
       <form onSubmit={handleSubmit}>
         <input
           type="search"
@@ -35,5 +33,5 @@ const handleSubmit = (event) => {
         </button>
       </form>
     </div>
-    );
-  }
+  );
+}
